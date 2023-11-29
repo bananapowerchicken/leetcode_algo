@@ -1,4 +1,4 @@
-# https://leetcode.com/problems/climbing-stairs/
+# https://leetcode.com/problems/pascals-triangle/
 
 def count_pairs(l: list):
     res = []
