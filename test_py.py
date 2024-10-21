@@ -1,65 +1,60 @@
-# ### --easy--
-
-# # print even numbers from list
-# numbers = [1, 2, 3, 4, 5, 6, 0]
-# print([n for n in numbers if n % 2 == 0 ])
-
-# # abcabcabc +
-# print(3 * 'abc')
-
-# # How would you remove the last item from a list my_list in Python + pop use correct
-# numbers.pop()
-# print(numbers)
-
-# # Write a simple for loop that prints the numbers 1 to 5
-# for i in range(1, 6):
-#     print(i)
-
-# # How do you define a function in Python that takes two arguments and returns their sum? + 
-# def sum_two(a, b):
-#     return a+b
-# print(sum_two(1, 2))
-
-# # Given the dictionary my_dict = {'a': 1, 'b': 2, 'c': 3},
-# # how would you access the value associated with the key 'b'
-# my_dict = {'a': 1, 'b': 2, 'c': 3}
-# print(my_dict['b'])
-
-
 ### --medium--
 
-# Write a list comprehension(compilation) that generates a list of squares for the numbers
-# 1 through 10, but only for the even numbers.
-print([n*n for n in range(1, 11) if n % 2 == 0])
+# caesar cipher
+# Write a function that implements the Caesar cipher encryption.
+# The function should take a string and a shift value, 
+# then return the encrypted version of the string by shifting
+#  the letters of the alphabet. For example:
+# caesar_cipher('hello', 3)  # Output: 'khoor'
+# caesar_cipher('xyz', 2)    # Output: 'zab'
 
-# How would you reverse the string 'Python is fun!' in Python?
-input_str = 'Python is fun!'
-def reveres_string(input_str):
-    return input_str[::-1]
-print(reveres_string(input_str))
+# import string # to get prepared ascii alphabet string
 
-# Given two dictionaries, dict1 = {'a': 1, 'b': 2} and dict2 = {'b': 3, 'c': 4}, how would
-# you merge them into one dictionary, with dict2 values overwriting dict1 in case of conflicts?
-dict1 = {'a': 1, 'b': 2}
-dict2 = {'b': 3, 'c': 4}
-print(dict1 | dict2)
 
-# Write a Python script that reads a file named data.txt and prints each line in uppercase.
-def read_file(filename):
-    with open(filename, 'r') as file:
-        print(file.read().upper())
-read_file('test.txt')
+# ALPHABET = string.ascii_lowercase
 
-# Define a class Dog with an attribute name. Add a method bark() that prints "<name> says woof!"
-#  where <name> is the dog’s name.
-class Dog:
-    def __init__(self, name):
-        self.name = name
+
+# def caesar_cipher(input: str, shift: int) -> str:
+#     input = input.lower()
+#     output = ''
+#     for s in input:
+#         index_old = ALPHABET.index(s)
+#         index_new = index_old + shift
+#         if index_new > len(ALPHABET) - 1:
+#             index_new = index_new % len(ALPHABET)
+
+#         output += ALPHABET[index_new]
     
-    def bark(self):
-        print(f'{self.name} says woof!')
+#     return output
 
-dog_1 = Dog('Ko')
-dog_1.bark()
+# # caesar_cipher('hello', 3)
+# caesar_cipher('xyz', 2) 
 
-print(dict1.keys())
+# # edges
+# # non chars: 1, ' ', '-' - what to do? i would remove them or make a strict requirements for input
+# # or leave them unchanged
+# # negative shift check or add such a functionality
+# # check if shift is int - otherwise raise an exception
+# # zero shift - return input - no extra moves
+
+
+
+from enum import Enum, auto
+
+class DiscountType(Enum):
+    STANDARD = auto() # any weight - 6%
+    SEASONAL = auto() # any weight - 12%
+    WEIGHT = auto() # weight <= 10 - 6%, weight > 10 - 18%
+
+def get_discounted_price(cart_weight, total_price, discount_type) -> float:
+    if discount_type == DiscountType.STANDART:
+        return 0.94 * total_price
+    if discount_type == DiscountType.SEASONAL:
+        return 0.88 * total_price
+    if discount_type == DiscountType.WEIGHT:
+        if cart_weight <= 10:
+            return 0.94 * total_price
+        else:
+            return 0.82 * total_price
+
+print(get_discounted_price(12, 100, DiscountType.WEIGHT))
