@@ -1,3 +1,6 @@
+# https://leetcode.com/problems/contains-duplicate-ii
+# easy
+
 
 def containsNearbyDuplicate(nums, k):
     """
