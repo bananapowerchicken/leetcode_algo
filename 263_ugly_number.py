@@ -8,20 +8,25 @@ def isUgly(n):
     prime factors 2, 3 or 5
     """
     PRIME_FACTORS = [2, 3, 5]
-    res = n 
+    res = n
 
-    while abs(res) != 1:
+    if n <=  0:
+        return False
+
+    while res != 1:
         for p in PRIME_FACTORS:
-            if res % p == 0:
-                res /= p
-                
+            while res % p == 0:
+                print(res, p)
+                res = res // p
             else:
                 continue
-        if abs(res) != 1:
+        if res != 1:
             return False
         
     
     return True
+        
+    
 
 
 
