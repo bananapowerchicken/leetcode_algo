@@ -10,9 +10,10 @@ def maxProfit(prices):
     res = 0
 
     while i_start < len(prices) - 1:
-        tmp_arr = [prices[i] - prices[i_start] for i in range(i_start + 1, len(prices))] # eats much time
-        if max(tmp_arr) > res:
-            res = max(tmp_arr)
+        # tmp_arr = [prices[i] - prices[i_start] for i in range(i_start + 1, len(prices))] # eats much time
+        curr_res = max(prices[i_start+1::]) - prices[i_start]
+        if curr_res > res:
+            res = curr_res
         i_start += 1
     
     return res
