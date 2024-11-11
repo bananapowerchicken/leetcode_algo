@@ -6,17 +6,18 @@ def maxProfit(prices):
     :type prices: List[int]
     :rtype: int
     """
-    i_start = 0
-    res = 0
-
-    while i_start < len(prices) - 1:
-        # tmp_arr = [prices[i] - prices[i_start] for i in range(i_start + 1, len(prices))] # eats much time
-        curr_res = max(prices[i_start+1::]) - prices[i_start]
-        if curr_res > res:
-            res = curr_res
-        i_start += 1
     
-    return res
+    p_min = 10001  # more than max possible in task
+    max_profit = 0
+
+    for p in prices:
+        p_min = min(p, p_min)
+        max_profit = max(max_profit, p - p_min)
+    
+    return max_profit
+
+
+
 
         
         
