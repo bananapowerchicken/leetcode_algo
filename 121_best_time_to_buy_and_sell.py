@@ -6,27 +6,24 @@ def maxProfit(prices):
     :type prices: List[int]
     :rtype: int
     """
-    while len(prices) >= 2:
-        min_p = min(prices)
-        min_i = prices.index(min_p)
+    i_start = 0
+    res = 0
 
-        if min_i + 1 < len(prices):
-            max_p = max(prices[min_i + 1::])
-        else:
-            prices.pop(min_i)
-            continue
+    while i_start < len(prices) - 1:
+        tmp_arr = [prices[i] - prices[i_start] for i in range(i_start + 1, len(prices))] # eats much time
+        if max(tmp_arr) > res:
+            res = max(tmp_arr)
+        i_start += 1
+    
+    return res
 
-        if max_p > min_p:
-            return max_p - min_p
-        else:
-            return 0
         
         
         
 
 def test():
     prices = [2,4,1]
-    assert maxProfit(prices) == 5
+    assert maxProfit(prices) == 2
 
     prices = [7,1,5,3,6,4]
     assert maxProfit(prices) == 5
