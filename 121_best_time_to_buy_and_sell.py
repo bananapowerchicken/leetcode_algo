@@ -14,12 +14,7 @@ def maxProfit(prices):
         p_min = min(p, p_min)
         max_profit = max(max_profit, p - p_min)
     
-    return max_profit
-
-
-
-
-        
+    return max_profit      
         
         
 
