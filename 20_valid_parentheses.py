@@ -1,6 +1,7 @@
 # https://leetcode.com/problems/valid-parentheses/description/
 # easy
 
+# TODO make easier and more elegant - must be the way
 
 def isValid(s):
     """
