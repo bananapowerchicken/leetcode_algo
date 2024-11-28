@@ -24,16 +24,18 @@ class MinStack:
         """
         :rtype: None
 
-        removes the elem on the top of the stack
+        removes the elem on the top of the stack(last of list)
         """
+        self.stack.pop(-1)
         
 
     def top(self) -> int:
         """
         :rtype: int
 
-        gets the top elem of the stack
+        gets the top elem of the stack(last of list)
         """
+        return self.stack[-1] # returns the last element of the list
         
 
     def getMin(self) -> int:
@@ -42,11 +44,22 @@ class MinStack:
 
         retrieves the min elem in the stack
         """
+        return min(self.stack)
 
 def test():
     test_stack = MinStack()
-    test_stack.push(3)
+    test_stack.push(-2)
+    test_stack.push(0)
+    test_stack.push(-3)
+    assert test_stack.getMin() == -3
     print(test_stack.stack)
+
+    test_stack.pop()
+    print(test_stack.stack)
+    assert test_stack.top() == 0
+    assert test_stack.getMin() == -2
+
+    
 
 
 
