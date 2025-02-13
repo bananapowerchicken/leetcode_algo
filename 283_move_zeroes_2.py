@@ -3,26 +3,43 @@
 
 # moving from the end to avoid neighbour nulls
 
+# fix place where should be next nonzero element moved!!!! this way only one cycle is required
+
 
 def moveZeroes(nums):
     """
     :type nums: List[int]
     :rtype: None Do not return anything, modify nums in-place instead.
     """
-    i = -1 # curr index
-    next_zero_end_ind = -1 # ind to put next zero to the end
-    len_negative = -len(nums)
+    # crap
 
-    while i >= len_negative: # process [0] case
-        if nums[i] == 0:
-            next_i = i - 1
-            next_zero_end_ind = swap_to_end(nums, i, next_zero_end_ind)
-            if next_i < len_negative:
-                break
-            i = next_i
-        else:
-            i -= 1
+    # i = -1 # curr index
+    # next_zero_end_ind = -1 # ind to put next zero to the end
+    # len_negative = -len(nums)
+
+    # while i >= len_negative: # process [0] case
+    #     if nums[i] == 0:
+    #         next_i = i - 1
+    #         next_zero_end_ind = swap_to_end(nums, i, next_zero_end_ind)
+    #         if next_i < len_negative:
+    #             break
+    #         i = next_i
+    #     else:
+    #         i -= 1
+
+    # nice decision
+    # may add check if indexes are  already equal - but don't know, what is faster
+    next_nonzero_elem_ind = 0
+    i = 0
     
+    while i < len(nums):
+        if nums[i] != 0:
+            nums[next_nonzero_elem_ind], nums[i] = nums[i], nums[next_nonzero_elem_ind]
+            next_nonzero_elem_ind +=1
+        i += 1
+
+
+
     return nums
 
 
