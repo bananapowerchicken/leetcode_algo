@@ -1,7 +1,7 @@
 # https://leetcode.com/problems/majority-element
 # easy
 # arrays
-# the best - space O(1) - Boyer Moor
+# the best - space O(1) - Boyer Moore vooting: candidate
 
 # complexity nice decision
 # time: O(n) * 3 - once go through the array (every element)
