@@ -5,6 +5,9 @@
 
 # fix place where should be next nonzero element moved!!!! this way only one cycle is required
 
+# complexity nice decision
+# time: O(n) - once go through the array (every element)
+# space O(1) - almost no extra memory
 
 def moveZeroes(nums):
     """
